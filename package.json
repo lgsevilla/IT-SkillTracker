@@ -1,0 +1,23 @@
+{
+  "name": "dwec04-te-2526-lgsevilla",
+  "version": "1.0.0",
+  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/j_YmcoFd) # 📘 DWEC04 - Tarea de Evaluación",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lgsevilla/IT-SkillTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lgsevilla/IT-SkillTracker/issues"
+  },
+  "homepage": "https://github.com/lgsevilla/IT-SkillTracker#readme",
+  "devDependencies": {
+    "@types/jquery": "^3.5.33"
+  }
+}

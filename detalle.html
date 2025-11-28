@@ -1,10 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <title>Detalle del Rol · SkillTrack IT</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script src="js/lib/jquery-3.7.1.min.js"></script>
+
+    <!-- Chart.js para el chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="module" src="js/main.js"></script>
 </head>
+
 <body>
+
+<header class="app-header">
+    <div class="header-inner">
+        <h1 class="app-title">SkillTrack IT · Detalle del Rol</h1>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="favorites.html" class="nav-link">Favoritos</a>
+        </nav>
+    </div>
+</header>
+
+<main class="detalle-layout">
+
+    <div id="loading-message">Cargando rol…</div>
+    <div id="error-message" class="error-message"></div>
+
+    <section class="role-header">
+        <a href="index.html" class="back-link">← Volver al resumen de roles</a>
+
+        <h2 id="role-title">Título del rol</h2>
+        <p id="role-meta" class="role-meta">País · Nivel</p>
+    </section>
+
+    <section class="change-role-section">
+        <label for="change-role-select">Rol:</label>
+        <select id="change-role-select">
+        </select>
+    </section>
+
+    <section class="filters-bar">
+        <div class="filter-group">
+            <label for="main-country-select">País</label>
+            <select id="main-country-select">
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="main-level-select">Nivel</label>
+            <select id="main-level-select">
+            </select>
+        </div>
+    </section>
+
+    <section class="kpi-section">
+        <div class="kpi-grid">
+            <article class="kpi-card">
+                <div class="kpi-label">Demanda</div>
+                <div class="kpi-value" id="kpi-role-demand">-</div>
+            </article>
+
+            <article class="kpi-card">
+                <div class="kpi-label">Salario medio (EUR)</div>
+                <div class="kpi-value" id="kpi-role-salary">-</div>
+            </article>
+
+            <article class="kpi-card">
+                <div class="kpi-label">Años de datos</div>
+                <div class="kpi-value" id="kpi-role-years">-</div>
+            </article>
+        </div>
+    </section>
+
+    <section class="chart-section">
+        <h3>Evolución del salario</h3>
+        <p class="chart-subtitle">
+            Evolución del salario medio del rol a lo largo de los años.
+        </p>
+
+        <p id="no-data-message" class="chart-subtitle" style="display:none;">
+            Sin datos disponibles para esta combinación de país y nivel.
+        </p>
+
+        <div class="chart-wrapper">
+            <canvas id="salary-chart"></canvas>
+        </div>
+    </section>
+
+    <section class="compare-section">
+        <h3>Comparar con otro rol</h3>
+        <p class="chart-subtitle">
+            Selecciona rol, país y nivel para compararlo en la misma gráfica.
+        </p>
+
+        <div class="filters-bar">
+            <div class="filter-group">
+                <label for="compare-role-name">Rol</label>
+                <select id="compare-role-name">
+                    <option value="">Sin comparación</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="compare-country-select">País</label>
+                <select id="compare-country-select" disabled>
+                    <option value="">Selecciona un rol primero</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="compare-level-select">Nivel</label>
+                <select id="compare-level-select" disabled>
+                    <option value="">Selecciona país primero</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+</main>
 
 </body>
 </html>

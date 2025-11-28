@@ -1,10 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta charset="UTF-8" />
+    <title>SkillTrack IT · Resumen y listado de roles</title>
 
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- jQuery (global) -->
+    <script src="js/lib/jquery-3.7.1.min.js"></script>
+
+    <!-- Entrypoint de app-->
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+<header class="app-header">
+    <div class="header-inner">
+        <h1 class="app-title">SkillTrack IT</h1>
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link nav-link-active">Resumen</a>
+            <a href="favorites.html" class="nav-link">Favoritos</a>
+            <a href="detalle.html?id=1" class="nav-link">Ejemplo detalle</a>
+        </nav>
+    </div>
+</header>
+
+<main class="app-main">
+
+    <div id="loading-message" class="banner banner-loading">Cargando datos…</div>
+    <div id="error-message" class="banner banner-error" style="display:none;"></div>
+
+    <section class="kpi-section">
+        <h2 class="section-title">Indicadores clave</h2>
+        <div class="kpi-grid">
+            <article class="kpi-card">
+                <div class="kpi-label">Demanda total global</div>
+                <div class="kpi-value" id="kpi-global-demand">-</div>
+            </article>
+
+            <article class="kpi-card">
+                <div class="kpi-label">Salario medio global (EUR)</div>
+                <div class="kpi-value" id="kpi-global-salary">-</div>
+            </article>
+        </div>
+    </section>
+
+    <section class="roles-section">
+        <div class="section-heading">
+            <div class="section-heading-left">
+                <h2 class="section-title">Roles más demandados</h2>
+                <p class="section-subtitle">
+                    Agregado por rol (todas las combinaciones país + nivel)
+                </p>
+            </div>
+        </div>
+
+        <div id="roles-grid" class="roles-grid"></div>
+    </section>
+
+    <section class="table-section" id="roles-table-section">
+        <div class="section-heading">
+            <h2 class="section-title">Listado completo de roles</h2>
+            <p class="section-subtitle">
+                Todas las combinaciones de rol · país · nivel. Haz clic en una fila para ver el detalle.
+            </p>
+        </div>
+
+        <section class="filters-bar">
+            <div class="filter-group">
+                <label for="filter-search">Buscar</label>
+                <input
+                        id="filter-search"
+                        type="search"
+                        placeholder="Rol, país o nivel…"
+                />
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-sort">Ordenar por</label>
+                <select id="filter-sort">
+                    <option value="demand-desc">Demanda (desc)</option>
+                    <option value="salary-desc">Salario medio (desc)</option>
+                    <option value="name-asc">Nombre (A–Z)</option>
+                </select>
+            </div>
+        </section>
+
+        <div class="table-wrapper">
+            <table class="roles-table">
+                <thead>
+                <tr>
+                    <th>★</th>
+                    <th>Rol</th>
+                    <th>País</th>
+                    <th>Nivel</th>
+                    <th>Salario medio (EUR)</th>
+                    <th>Demanda</th>
+                </tr>
+                </thead>
+                <tbody id="roles-table-body"></tbody>
+            </table>
+        </div>
+
+        <div class="pagination-bar">
+            <button id="pagination-prev" class="btn btn-secondary">Anterior</button>
+            <span id="pagination-info" class="pagination-info">Página 1 de 1</span>
+            <button id="pagination-next" class="btn btn-secondary">Siguiente</button>
+        </div>
+    </section>
+</main>
 </body>
 </html>

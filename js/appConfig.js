@@ -1,0 +1,1 @@
+export const API_URL = "https://skilltrack-it.free.beeceptor.com/roles";

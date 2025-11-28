@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Roles favoritos · SkillTrack IT</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script src="js/lib/jquery-3.7.1.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+<header class="app-header">
+    <div class="header-inner">
+        <h1 class="app-title">SkillTrack IT · Favoritos</h1>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Dashboard</a>
+            <a href="favorites.html" class="nav-link nav-link-active">Favoritos</a>
+        </nav>
+    </div>
+</header>
+
+<main class="app-main">
+
+    <div id="loading-message" class="banner banner-loading">Cargando favoritos…</div>
+    <div id="error-message" class="banner banner-error" style="display:none;"></div>
+
+    <section class="table-section">
+        <div class="section-heading">
+            <h2 class="section-title">Roles favoritos</h2>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="roles-table">
+                <thead>
+                <tr>
+                    <th>★</th>
+                    <th>Rol</th>
+                    <th>País</th>
+                    <th>Nivel</th>
+                    <th>Salario medio</th>
+                    <th>Demanda</th>
+                </tr>
+                </thead>
+                <tbody id="favorites-table-body"></tbody>
+            </table>
+        </div>
+
+        <div class="pagination-bar">
+            <button id="favorites-pagination-prev" class="btn btn-secondary">Anterior</button>
+            <span id="favorites-pagination-info" class="pagination-info"></span>
+            <button id="favorites-pagination-next" class="btn btn-secondary">Siguiente</button>
+        </div>
+    </section>
+
+</main>
+</body>
+</html>
