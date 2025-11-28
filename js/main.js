@@ -3,28 +3,19 @@ import { initDetallePage } from "./view/detalleView.js";
 import { initFavoritesPage } from "./view/favoritesView.js";
 
 function getCurrentPage() {
-    const path = window.location.pathname;      // e.g. "/IT-SkillTracker/" o "/IT-SkillTracker/detalle.html"
-    const segments = path.split("/").filter(Boolean);
-    const last = segments[segments.length - 1] || "index.html"; // si acaba en "/", last será undefined
+    const path = window.location.pathname;
+    const last = path.split("/").filter(Boolean).pop() || "index.html";
 
-    // last será:
-    // - "index.html" (si accedes a /index.html)
-    // - "IT-SkillTracker" (si algún día pones un index en root del user)
-    // - "detalle.html"
-    // - "favorites.html"
-    // - o "IT-SkillTracker" cuando la URL es "/IT-SkillTracker/"
+    // Normalize cases
+    if (last === "index.html") return "dashboard";
+    if (last === "detalle.html") return "detalle";
+    if (last === "favorites.html") return "favorites";
 
-    if (last === "index.html" || last === "IT-SkillTracker") {
-        return "dashboard";
-    }
-    if (last === "detalle.html") {
-        return "detalle";
-    }
-    if (last === "favorites.html") {
-        return "favorites";
-    }
+    // GitHub Pages root of project "/REPO/" → last = "IT-SkillTracker"
+    // If the last segment matches your repository name → dashboard
+    if (last === "IT-SkillTracker") return "dashboard";
 
-    return "dashboard";   // fallback razonable
+    return "dashboard";  // fallback
 }
 
 document.addEventListener("DOMContentLoaded", () => {
