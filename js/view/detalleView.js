@@ -1,5 +1,3 @@
-// js/view/detalleView.js
-
 import { getAllRoles, getRoleById } from "../service/apiService.js";
 import {
     filterBaseRoles,

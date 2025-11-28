@@ -3,13 +3,16 @@ import { initDetallePage } from "./view/detalleView.js";
 import { initFavoritesPage } from "./view/favoritesView.js";
 
 function getCurrentPage() {
-    const path = window.location.pathname;
+    const path = window.location.pathname;      // ej: "/IT-SkillTracker/" o "/IT-SkillTracker/detalle.html"
+    const segments = path.split("/").filter(Boolean);
+    // Si no hay último segmento, asumimos "index.html"
+    const last = segments[segments.length - 1] || "index.html";
 
-    if (path.endsWith("index.html") || path === "/" || path === "") return "dashboard";
-    if (path.endsWith("detalle.html")) return "detalle";
-    if (path.endsWith("favorites.html")) return "favorites";
+    if (last === "index.html") return "dashboard";
+    if (last === "detalle.html") return "detalle";
+    if (last === "favorites.html" || last === "favoritos.html") return "favorites";
 
-    return "unknown";
+    return "dashboard"; // fallback razonable
 }
 
 document.addEventListener("DOMContentLoaded", () => {
