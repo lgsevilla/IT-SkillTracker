@@ -3,41 +3,47 @@ import { initDetallePage } from "./view/detalleView.js";
 import { initFavoritesPage } from "./view/favoritesView.js";
 
 function getCurrentPage() {
-    const path = window.location.pathname;      // ej: "/IT-SkillTracker/" o "/IT-SkillTracker/detalle.html"
+    const path = window.location.pathname;      // e.g. "/IT-SkillTracker/" o "/IT-SkillTracker/detalle.html"
     const segments = path.split("/").filter(Boolean);
-    // Si no hay último segmento, asumimos "index.html"
-    const last = segments[segments.length - 1] || "index.html";
+    const last = segments[segments.length - 1] || "index.html"; // si acaba en "/", last será undefined
 
-    if (last === "index.html") return "dashboard";
-    if (last === "detalle.html") return "detalle";
-    if (last === "favorites.html" || last === "favoritos.html") return "favorites";
+    // last será:
+    // - "index.html" (si accedes a /index.html)
+    // - "IT-SkillTracker" (si algún día pones un index en root del user)
+    // - "detalle.html"
+    // - "favorites.html"
+    // - o "IT-SkillTracker" cuando la URL es "/IT-SkillTracker/"
 
-    return "dashboard"; // fallback razonable
+    if (last === "index.html" || last === "IT-SkillTracker") {
+        return "dashboard";
+    }
+    if (last === "detalle.html") {
+        return "detalle";
+    }
+    if (last === "favorites.html") {
+        return "favorites";
+    }
+
+    return "dashboard";   // fallback razonable
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const page = getCurrentPage();
+    console.log("[Main] current page:", page, "pathname:", window.location.pathname);
 
     switch (page) {
         case "dashboard":
-            initDashboardPage().catch(err => {
-                console.error("Error inicializando dashboard:", err);
-            });
+            initDashboardPage();
             break;
-
         case "detalle":
-            initDetallePage().catch(err => {
-                console.error("Error inicializando detalle:", err);
-            });
+            initDetallePage();
             break;
-
         case "favorites":
-            initFavoritesPage().catch(err => {
-                console.error("Error inicializando favoritos:", err);
-            });
+            initFavoritesPage();
             break;
-
         default:
+            // por si acaso, podrías llamar al dashboard también
+            // initDashboardPage();
             break;
     }
 });
